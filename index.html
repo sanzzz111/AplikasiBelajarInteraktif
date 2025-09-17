@@ -5,15 +5,25 @@
   <title>Teknologi untuk Down Syndrome</title>
   <style>
     body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: url("https://files.catbox.moe/tonq7z.jpeg") no-repeat center center fixed;
-      background-size: cover;
-      color:#123;
-      padding:18px;
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
+    body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: url("https://files.catbox.moe/tonq7z.jpeg") no-repeat center center fixed;
+  background-size: cover;
+  color: #123;
+
+  /* kasih ruang biar tidak mepet */
+  padding: 20px;
+
+  /* susunan konten ke bawah, di tengah */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  /* biar tinggi selalu penuh layar */
+  min-height: 100vh;
+  box-sizing: border-box;
     }
     .container{
       max-width:800px;
