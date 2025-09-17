@@ -22,19 +22,75 @@
       padding:20px;
       box-shadow:0 4px 12px rgba(0,0,0,.2);
     }
-    /* Batasi ukuran Game Edukasi */
-#game-edu {
-  max-width: 500px;   /* supaya tidak memenuhi layar */
-  margin: 20px auto;  /* biar posisinya center */
-  padding: 16px;
-  background: #f9f9f9; 
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+    
     h1{
       text-align:center;
       color:#1a3;
     }
+    
+#game-edu {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffffee;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+#game-edu h2 {
+  text-align: center;
+  color: #2a6;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.shape {
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.shape:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.target {
+  border: 2px dashed #bbb;
+  padding: 20px;
+  min-width: 100px;
+  min-height: 100px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background 0.2s, border 0.2s;
+}
+
+.target:hover {
+  background: #f0f8ff;
+  border-color: #2a6;
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 18px;
+  border: none;
+  background: #3498db;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2980b9;
+}
+    
     .card{
       background:#f0f8ff;
       border-radius:10px;
