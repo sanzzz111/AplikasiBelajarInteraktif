@@ -7,8 +7,10 @@
     body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  background: url("https://files.catbox.moe/qoqu0c.png") no-repeat center center fixed !important;
-  background-size: cover !important;
+  background: url("https://files.catbox.moe/qoqu0c.png") no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed; /* Supaya tidak ikut scroll */
+  min-height: 100vh; /* Pastikan full tinggi layar */
   color: #123;
 
   /* kasih ruang biar tidak mepet */
