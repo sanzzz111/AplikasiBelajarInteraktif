@@ -217,55 +217,97 @@
 
 <div class="game">
   <h2>Game Tebak Gambar</h2>
-  <p>Tebak nama dari gambar yang muncul!</p>
-  <div id="gambar-tebak" style="margin:20px;">
-    <img id="gambar" src="" alt="Gambar tebakan" width="120">
-  </div>
 
-  <input type="text" id="jawaban" placeholder="Ketik jawaban di sini">
-  <button onclick="cekJawaban()">Cek Jawaban</button>
-  <p id="hasil"></p>
-</div>
-
-<script>
-  // daftar semua gambar + jawabannya
-  const gambarList = [
-    {src: "https://files.catbox.moe/zj5ern.jpg", nama: "Satu"},
-    {src: "https://files.catbox.moe/pe2063.jpg", nama: "Dua"},
-    {src: "https://files.catbox.moe/3uhwlo.jpg", nama: "Tiga"},
-    {src: "https://files.catbox.moe/ydu7xm.jpg", nama: "Empat"},
-    {src: "https://files.catbox.moe/99ljw5.jpg", nama: "Lima"},
-    {src: "https://files.catbox.moe/m79dbk.jpg", nama: "Enam"},
-    {src: "https://files.catbox.moe/u6pnuh.jpg", nama: "Tujuh"},
-    {src: "https://files.catbox.moe/ad15xl.jpg", nama: "Delapan"},
-    {src: "https://files.catbox.moe/cum6oq.jpg", nama: "Sembilan"}
-  ];
-
-  let currentIndex = 0;
-
-  function tampilkanGambar() {
-    const gambar = gambarList[currentIndex];
-    document.getElementById("gambar").src = gambar.src;
-    document.getElementById("hasil").innerText = "";
-    document.getElementById("jawaban").value = "";
-  }
-
-  function cekJawaban() {
-    const input = document.getElementById("jawaban").value.toLowerCase().trim();
-    const jawabanBenar = gambarList[currentIndex].nama;
-
-    if (input === jawabanBenar) {
-      document.getElementById("hasil").innerText = "✅ Benar!";
-      currentIndex = (currentIndex + 1) % gambarList.length;
-      setTimeout(tampilkanGambar, 1000);
-    } else {
-      document.getElementById("hasil").innerText = "❌ Salah, coba lagi!";
+  <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tebak Angka - Belajar Interaktif</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f8ff;
+      padding: 20px;
     }
-  }
+    h1 {
+      color: #2c3e50;
+    }
+    #question {
+      font-size: 24px;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 20px 30px;
+      font-size: 22px;
+      border: none;
+      border-radius: 15px;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #45a049;
+    }
+    #feedback {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎲 Tebak Angka</h1>
+  <p id="question">Tebak angka berapa ini? (1 - 10)</p>
+  
+  <div id="buttons"></div>
 
-  // tampilkan pertama kali
-  tampilkanGambar();
-</script>
+  <p id="feedback"></p>
+  <button onclick="newGame()" style="margin-top:20px; padding:15px; font-size:18px;">Main Lagi</button>
+
+  <script>
+    let correctNumber;
+
+    function newGame() {
+      document.getElementById("feedback").textContent = "";
+      correctNumber = Math.floor(Math.random() * 10) + 1; // angka 1-10
+      console.log("Jawaban:", correctNumber); // bisa dihapus, ini untuk cek di console
+    }
+
+    function createButtons() {
+      const container = document.getElementById("buttons");
+      container.innerHTML = "";
+      for (let i = 1; i <= 10; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        btn.className = "btn";
+        btn.onclick = () => checkAnswer(i);
+        container.appendChild(btn);
+      }
+    }
+
+    function checkAnswer(num) {
+      const feedback = document.getElementById("feedback");
+      if (num === correctNumber) {
+        feedback.textContent = "✅ Benar! Kamu hebat!";
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = "❌ Salah, coba lagi!";
+        feedback.style.color = "red";
+      }
+    }
+
+    // jalankan pertama kali
+    createButtons();
+    newGame();
+  </script>
+</body>
+</html>
 
 <!-- Visual Schedule -->
 <div class="card">
