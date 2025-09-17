@@ -482,6 +482,54 @@ button:hover {
   }
 </script>
 
+    <div class="card">
+  <h2>Game Tebak Warna</h2>
+  <p>Pilih kotak warna yang sesuai dengan nama warna di atas!</p>
+
+  <h3 id="colorName" style="text-align:center; color:#333;">Merah</h3>
+
+  <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:15px;">
+    <div class="colorBox" style="width:80px; height:80px; background:red; border-radius:10px; cursor:pointer;"></div>
+    <div class="colorBox" style="width:80px; height:80px; background:blue; border-radius:10px; cursor:pointer;"></div>
+    <div class="colorBox" style="width:80px; height:80px; background:green; border-radius:10px; cursor:pointer;"></div>
+    <div class="colorBox" style="width:80px; height:80px; background:yellow; border-radius:10px; cursor:pointer;"></div>
+  </div>
+
+  <p id="result" style="text-align:center; font-weight:bold; margin-top:15px;"></p>
+</div>
+
+<script>
+  const colors = [
+    {name: "Merah", value: "red"},
+    {name: "Biru", value: "blue"},
+    {name: "Hijau", value: "green"},
+    {name: "Kuning", value: "yellow"}
+  ];
+
+  let currentColor = null;
+
+  function newRound() {
+    currentColor = colors[Math.floor(Math.random() * colors.length)];
+    document.getElementById("colorName").textContent = currentColor.name;
+    document.getElementById("result").textContent = "";
+  }
+
+  document.querySelectorAll(".colorBox").forEach(box => {
+    box.addEventListener("click", function() {
+      if (this.style.background === currentColor.value) {
+        document.getElementById("result").textContent = "Benar! 🎉";
+        document.getElementById("result").style.color = "green";
+        setTimeout(newRound, 1000); // otomatis ganti soal
+      } else {
+        document.getElementById("result").textContent = "Salah, coba lagi!";
+        document.getElementById("result").style.color = "red";
+      }
+    });
+  });
+
+  newRound();
+</script>
+
 <!-- Visual Schedule -->
 <div class="card">
   <h2>Rutin Harian (Visual schedule)</h2>
