@@ -215,35 +215,47 @@
   </div>
 </div>
 
-<div class="game">
-  <h2>Game Tebak Gambar</h2>
-
-  <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tebak Angka - Belajar Interaktif</title>
+  <title>Tebak Angka Bergambar</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background: #f0f8ff;
+      margin: 0;
+      padding: 0;
+      background: url("https://i.ibb.co/6Hmy5cN/background.jpg") no-repeat center center fixed;
+      background-size: cover;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.85); /* putih transparan */
+      margin: 40px auto;
       padding: 20px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     h1 {
       color: #2c3e50;
     }
     #question {
-      font-size: 24px;
-      margin: 20px 0;
+      font-size: 22px;
+      margin: 15px 0;
       font-weight: bold;
+    }
+    #numberImage {
+      width: 150px;
+      margin: 15px 0;
     }
     .btn {
       display: inline-block;
-      margin: 10px;
-      padding: 20px 30px;
-      font-size: 22px;
+      margin: 8px;
+      padding: 18px 28px;
+      font-size: 20px;
       border: none;
       border-radius: 15px;
       background: #4CAF50;
@@ -259,24 +271,55 @@
       font-size: 22px;
       font-weight: bold;
     }
+    .restart {
+      margin-top: 20px;
+      padding: 15px;
+      font-size: 18px;
+      border-radius: 12px;
+      border: none;
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+    }
+    .restart:hover {
+      background: #2980b9;
+    }
   </style>
 </head>
 <body>
-  <h1>🎲 Tebak Angka</h1>
-  <p id="question">Tebak angka berapa ini? (1 - 10)</p>
+  <div class="container">
+    <h1>🎲 Tebak Angka Bergambar</h1>
+    <p id="question">Ini gambar angka berapa?</p>
+    
+    <img id="numberImage" src="" alt="Gambar Angka">
+    
+    <div id="buttons"></div>
   
-  <div id="buttons"></div>
-
-  <p id="feedback"></p>
-  <button onclick="newGame()" style="margin-top:20px; padding:15px; font-size:18px;">Main Lagi</button>
+    <p id="feedback"></p>
+    <button class="restart" onclick="newGame()">Main Lagi</button>
+  </div>
 
   <script>
     let correctNumber;
 
+    // Link gambar angka 1-10 (bisa diganti sesuai kebutuhan)
+    const numberImages = {
+      1: "https://i.ibb.co/QDbrbZ5/angka1.png",
+      2: "https://i.ibb.co/W3h1Tcb/angka2.png",
+      3: "https://i.ibb.co/Yyb5C4z/angka3.png",
+      4: "https://i.ibb.co/M7nB9Zy/angka4.png",
+      5: "https://i.ibb.co/Zm39yL5/angka5.png",
+      6: "https://i.ibb.co/8m6t0Yt/angka6.png",
+      7: "https://i.ibb.co/HhNkmzB/angka7.png",
+      8: "https://i.ibb.co/vHDC7Gh/angka8.png",
+      9: "https://i.ibb.co/v3Spjgb/angka9.png",
+      10:"https://i.ibb.co/FzWZkC7/angka10.png"
+    };
+
     function newGame() {
       document.getElementById("feedback").textContent = "";
       correctNumber = Math.floor(Math.random() * 10) + 1; // angka 1-10
-      console.log("Jawaban:", correctNumber); // bisa dihapus, ini untuk cek di console
+      document.getElementById("numberImage").src = numberImages[correctNumber];
     }
 
     function createButtons() {
